@@ -1,0 +1,125 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #154734;
+  --secondary: #a67c52;
+  --accent: #e2d1ba;
+  --success: #2ecc71;
+  --warning: #f39c12;
+  --error: #e74c3c;
+  --black: #2d3436;
+  --white: #f7f7f7;
+}
+
+body {
+  @apply bg-[#0f2c21] text-white font-poppins overflow-x-hidden;
+}
+
+.card-shadow {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.25);
+}
+
+.table-felt {
+  background-image: radial-gradient(#175e40 15%, transparent 16%), 
+                    radial-gradient(#175e40 15%, transparent 16%);
+  background-size: 8px 8px;
+  background-position: 0 0, 4px 4px;
+  background-color: var(--primary);
+}
+
+.chip {
+  @apply rounded-full flex items-center justify-center relative select-none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.chip::before {
+  content: '';
+  @apply absolute w-[85%] h-[85%] rounded-full border-2 border-dashed border-opacity-50;
+}
+
+.chip-white {
+  @apply bg-white text-black;
+}
+
+.chip-red {
+  @apply bg-red-600 text-white;
+}
+
+.chip-blue {
+  @apply bg-blue-600 text-white;
+}
+
+.chip-green {
+  @apply bg-green-600 text-white;
+}
+
+.chip-black {
+  @apply bg-gray-900 text-white;
+}
+
+.card-container {
+  perspective: 1000px;
+}
+
+.card {
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+}
+
+.card.flipped {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.card-back {
+  transform: rotateY(180deg);
+}
+
+@keyframes dealCard {
+  0% {
+    opacity: 0;
+    transform: translateY(-100px) scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.deal-animation {
+  animation: dealCard 0.5s ease-out forwards;
+}
+
+.btn {
+  @apply px-4 py-2 rounded-md font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-opacity-50;
+}
+
+.btn-primary {
+  @apply bg-[#a67c52] hover:bg-[#8a6743] text-white focus:ring-[#a67c52];
+}
+
+.btn-secondary {
+  @apply bg-gray-700 hover:bg-gray-800 text-white focus:ring-gray-700;
+}
+
+.btn-success {
+  @apply bg-green-600 hover:bg-green-700 text-white focus:ring-green-600;
+}
+
+.btn-danger {
+  @apply bg-red-600 hover:bg-red-700 text-white focus:ring-red-600;
+}
+
+.btn-disabled {
+  @apply bg-gray-400 text-gray-700 cursor-not-allowed;
+}
